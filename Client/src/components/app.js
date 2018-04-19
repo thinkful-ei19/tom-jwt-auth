@@ -7,7 +7,6 @@ import LandingPage from './landing-page';
 import Dashboard from './dashboard';
 import RegistrationPage from './registration-page';
 import { refreshAuthToken } from '../actions/auth';
-import { clearAuthToken } from '../local-storage';
 import Idle from 'react-idle';
 
 export class App extends React.Component {
@@ -77,7 +76,7 @@ render() {
         <div className="app">
             <HeaderBar />
             <Route exact path="/" component={LandingPage} />
-            <Route onEnter={onUserNavigate} onChange={onUserNavigate} exact path="/dashboard" component={Dashboard} />
+            <Route exact path="/dashboard" component={Dashboard} />
             <Route exact path="/register" component={RegistrationPage} />
         </div>
     );

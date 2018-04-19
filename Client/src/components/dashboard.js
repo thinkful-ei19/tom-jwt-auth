@@ -11,19 +11,7 @@ export class Dashboard extends React.Component {
 
     render() {
         return (
-  
             <div className="dashboard">
-                <Idle
-                    timeout={2000}
-                    render={({ idle }) =>
-                        <h1>
-                            {idle
-                                ? "You are idle."
-                                : "Stop doing stuff for 2 seconds."
-                            }
-                        </h1>
-                    }
-                />
                 <div className="dashboard-username">
                     Username: {this.props.username}
                 </div>

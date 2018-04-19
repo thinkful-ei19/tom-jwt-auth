@@ -2,6 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 import requiresLogin from './requires-login';
 import {fetchProtectedData} from '../actions/protected-data';
+import Idle from 'react-idle';
 
 export class Dashboard extends React.Component {
     componentDidMount() {
@@ -10,7 +11,19 @@ export class Dashboard extends React.Component {
 
     render() {
         return (
+  
             <div className="dashboard">
+                <Idle
+                    timeout={2000}
+                    render={({ idle }) =>
+                        <h1>
+                            {idle
+                                ? "You are idle."
+                                : "Stop doing stuff for 2 seconds."
+                            }
+                        </h1>
+                    }
+                />
                 <div className="dashboard-username">
                     Username: {this.props.username}
                 </div>

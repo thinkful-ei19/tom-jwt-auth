@@ -8,6 +8,7 @@ import Dashboard from './dashboard';
 import RegistrationPage from './registration-page';
 import { refreshAuthToken } from '../actions/auth';
 import Idle from 'react-idle';
+import {BootUser} from './boot-user';
 
 export class App extends React.Component {
     componentDidUpdate(prevProps) {
@@ -71,16 +72,18 @@ export class App extends React.Component {
 
 
 
-render() {
-    return (
-        <div className="app">
-            <HeaderBar />
-            <Route exact path="/" component={LandingPage} />
-            <Route exact path="/dashboard" component={Dashboard} />
-            <Route exact path="/register" component={RegistrationPage} />
-        </div>
-    );
-}
+    render() {
+        return (
+            <div className="app">
+            <BootUser />    
+
+                <HeaderBar />
+                <Route exact path="/" component={LandingPage} />
+                <Route exact path="/dashboard" component={Dashboard} />
+                <Route exact path="/register" component={RegistrationPage} />
+            </div>
+        );
+    }
 }
 
 const mapStateToProps = state => ({

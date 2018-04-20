@@ -4,21 +4,37 @@ import { clearAuth } from '../actions/auth';
 import Idle from 'react-idle';
 
 export class BootUser extends React.Component {
-    state = {
-        idle: false
+    constructor(props) {
+        super(props);
+        this.state = {
+            idle: false
+        }
     }
 
     render() {
         return (
             <div>
                 {this.state.idle === false && (
-                    <Idle timeout={1 * 10 * 1000} onChange={({ idle }) => console.log({ idle })}
-                        render={({ idle }) =>
-                            <h1>
-                                {idle ? "You will be logged out"  : ""}
-                            </h1>
-                        }
-                    />
+                    <div>
+                        <Idle timeout={1 * 5 * 1000} onChange={({ idle }) => console.log({ idle })}
+                            render={({ idle }) => {
+                                console.log('logout!');
+
+                                return (
+                                    <h1>
+                                        {idle ? <button onClick={() => this.state.idle === false}>"You will be logged out in 10 seconds" </button> : ""}
+                                    </h1>
+                                )
+                            }
+                            }
+                        />
+                        <Idle timeout={1 * 10 * 1000} onChange={({ idle }) => {
+                            if (idle) {
+                                console.log('boot');
+                                this.props.dispatch(clearAuth());
+                            }
+                        }} />
+                    </div>
                 )}
 
             </div>
@@ -29,3 +45,4 @@ export class BootUser extends React.Component {
 
 
 
+export default connect()(BootUser);

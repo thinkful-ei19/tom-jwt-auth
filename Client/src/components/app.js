@@ -7,8 +7,6 @@ import LandingPage from './landing-page';
 import Dashboard from './dashboard';
 import RegistrationPage from './registration-page';
 import { refreshAuthToken } from '../actions/auth';
-import Idle from 'react-idle';
-import {BootUser} from './boot-user';
 
 export class App extends React.Component {
     componentDidUpdate(prevProps) {
@@ -40,43 +38,9 @@ export class App extends React.Component {
         clearInterval(this.refreshInterval);
     }
 
-
-
-    // onUserNavigate() {
-    //     document.onclick = function () {
-    //         _idleSecondsCounter = 0;
-    //     };
-
-    //     document.onmousemove = function () {
-    //         _idleSecondsCounter = 0;
-    //     };
-
-    //     document.onkeypress = function () {
-    //         _idleSecondsCounter = 0;
-    //     };
-    // }
-    // CheckIdleTime() {
-    //     var IDLE_TIMEOUT = 60; //seconds
-    //     var _idleSecondsTimer = null;
-    //     var _idleSecondsCounter = 0;
-    //     _idleSecondsCounter++;
-    //     var oPanel = document.getElementById("SecondsUntilExpire");
-    //     if (oPanel)
-    //         oPanel.innerHTML = (IDLE_TIMEOUT - _idleSecondsCounter) + "";
-    //     if (_idleSecondsCounter >= IDLE_TIMEOUT) {
-    //         window.clearInterval(_idleSecondsTimer);
-    //         alert("Time expired!");
-    //         document.location.href = "logout.html";
-    //     }
-    // }
-
-
-
     render() {
         return (
             <div className="app">
-            <BootUser />    
-
                 <HeaderBar />
                 <Route exact path="/" component={LandingPage} />
                 <Route exact path="/dashboard" component={Dashboard} />
